@@ -1,5 +1,4 @@
 def checkCC(no):
-    #no = str(no)
     list = []
     for i in no:
         i = int(i)
@@ -11,21 +10,6 @@ def checkCC(no):
     while pointer < len(list):
         sumofm.append(list[pointer]*2)
         pointer += 2
-
-    #for i in range(0,len(sumofm)):
-    #    print (i)
-    #    intro = str(sumofm[i])
-    #    if len(intro) > 1:
-    #        for j in intro:
-    #            sumofm.append(j)
-    #    sumofm.remove(sumofm[i])
-    #    i = int(i)
-
-    #take each number in list
-    #turn into string
-    #if the length of any element is > 1, then split it
-    #and append to list
-    #then go through every element and add them all together
 
     for i in sumofm:
         c = str(i)
@@ -52,13 +36,15 @@ def checkCC(no):
         print("This credit card is valid!")
     else:
         print("This credit card is not valid!")
-
 def import_no():
-    return 0
-
+    filename = open(str(input("Enter the name of the file with the file type (e.g. .txt) at the end: ")))
+    read_file = filename.read().split('\n')
+    filename.close()
+    for i in read_file:
+        print (i)
+        checkCC(i)
 def generate():
     return 0
-
 def get_num(ccnum):
     ccnum = ''
     for i in range(16):
@@ -66,15 +52,11 @@ def get_num(ccnum):
         userentercc = str(userentercc)
         ccnum += userentercc
     return ccnum
-
 def quit():
-    return 0
-
+    exit()
 def menu():
     print("1. Check my Card","2. Import numbers to check","3. Generate a valid credit card number","4. Quit")
-
 menu()
-
 try:
     usermenuinp = int(input("Enter a number to select an option from the menu: "))
 except:
@@ -82,7 +64,35 @@ except:
 else:
     while usermenuinp < 0 or usermenuinp > 4:
         usermenuinp = int(input("Enter a number from 1-4 to select an option from the menu: "))
-
 cc_num = ''
-get_num(cc_num)
-checkCC(cc_num)
+#while usermenuinp != 4:
+if usermenuinp == 1:
+    get_num(cc_num)
+    checkCC(cc_num)
+elif usermenuinp == 2:
+    import_no()
+elif usermenuinp == 3:
+    generate()
+
+#
+#try: #tries to change the value into an integer
+#    user_choice = int(user_choice)
+#except (ValueError): #if there is a value error than the user will be asked to input again
+#    user_choice = int(input("Please choose by typing in the number"))
+
+#while user_choice != 5: #while the user's choice isn't quit
+#    if user_choice == 1:
+#        Enter_RLE() #if 1 is entered then this function will run
+#    elif user_choice == 2:
+#        Display_ASCIIArt()  #if 2 is entered then this function will run
+#    elif user_choice == 3:
+#        Convertto_ASCII() #if 3 is entered then this function will run
+#    elif user_choice == 4:
+#        Convertto_RLE() #if 4 is entered then this function will run
+#    else:
+#        print("Please try again.") #if the answer is not a 1,2,3,4 or 5, this message will outputted
+#    print("")
+#    user_choice = int(input("Please choose by typing in the number")) #the user will be asked to enter an integer again
+#
+#else:
+#    Quit() #if 5 is entered then this function will run
